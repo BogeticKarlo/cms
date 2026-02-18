@@ -1,5 +1,3 @@
-/* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
-/* MODIFIED TO ADD UploadHandlersProvider FOR FILE UPLOADS */
 import config from '@payload-config'
 import '@payloadcms/next/css'
 import type { ServerFunctionClient } from 'payload'
@@ -24,11 +22,11 @@ const serverFunction: ServerFunctionClient = async function (args) {
 }
 
 const Layout = ({ children }: Args) => (
-  <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
-    <UploadHandlersProvider>
+  <UploadHandlersProvider>
+    <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
       {children}
-    </UploadHandlersProvider>
-  </RootLayout>
+    </RootLayout>
+  </UploadHandlersProvider>
 )
 
 export default Layout
