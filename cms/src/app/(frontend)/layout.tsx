@@ -1,7 +1,7 @@
 import React from 'react'
 // ...existing code...
 // Reference styles from /public
-import '/styles.css'
+import 'C:\Users\karlo\Desktop\repository\cms\cms\public\styles.css'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
