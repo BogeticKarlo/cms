@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { getPayload } from 'payload'
 import React from 'react'
 import { fileURLToPath } from 'url'
-import logo from './assets/logo.png'
+import logo from 'C:\Users\karlo\Desktop\repository\cms\cms\public\logo.png'
 
 // Reference logo from /public
 const logo = '/logo.png';
