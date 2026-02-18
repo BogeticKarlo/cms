@@ -5,7 +5,7 @@ import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import { UploadHandlersProvider } from '@payloadcms/ui'
 import React from 'react'
 
-import { importMap } from './admin/importMap.js'
+import { importMap } from './admin/importMap.client.js'
 import './custom.scss'
 
 type Args = {
