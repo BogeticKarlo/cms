@@ -5,6 +5,9 @@ import React from 'react'
 import { fileURLToPath } from 'url'
 import logo from './assets/logo.png'
 
+// Reference logo from /public
+const logo = '/logo.png';
+
 import config from '@/payload.config'
 import './styles.css'
 
@@ -23,7 +26,7 @@ export default async function HomePage() {
           <Image
             alt="Payload Logo"
             height={200}
-            src={logo}
+            src={logo} // Updated to reference logo from /public
             width={200}
           />
         </picture>
