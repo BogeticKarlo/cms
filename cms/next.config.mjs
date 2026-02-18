@@ -2,23 +2,20 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  webpack: (webpackConfig, { isServer }) => {
-    // Resolve extensions as before
+  // Image domains for Next.js image optimization
+  images: {
+    domains: [
+      'cms-bogetickarlos-projects.vercel.app',  // your CMS domain
+      'xhebsnwjpfcdttydwuhg.storage.supabase.co', // your Supabase storage bucket
+    ],
+  },
+
+  // Your existing webpack config
+  webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
-    }
-
-    // 🔹 Ignore Node-only modules in browser
-    if (!isServer) {
-      webpackConfig.resolve.fallback = {
-        ...webpackConfig.resolve.fallback,
-        worker_threads: false,
-        fs: false,
-        path: false,
-      }
     }
 
     return webpackConfig
