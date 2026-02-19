@@ -1,22 +1,29 @@
+// app/page.js
 import Image from 'next/image'
 import React from 'react'
 import styles from '../../../public/styles.module.css'
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'; // force server-side rendering
 
-const CMS_URL = 'https://cms-bogetickarlos-projects.vercel.app'
+const CMS_URL = 'https://cms-bogetickarlos-projects.vercel.app'; // ⚠️ no trailing slash
 
 export default async function HomePage() {
-  let lessons = []
+  let lessons = [];
 
   try {
-    const res = await fetch(`${CMS_URL}/api/lesson-pages?depth=1&sort=order`, { cache: 'no-store' })
-    if (!res.ok) throw new Error(`CMS fetch failed: ${res.status}`)
-    const data = await res.json()
-    lessons = data.docs || []
+    const res = await fetch(`${CMS_URL}/api/lesson-pages?depth=1&sort=order`, {
+      cache: 'no-store', // always fetch fresh data
+    });
+
+    if (!res.ok) {
+      throw new Error(`CMS fetch failed with status ${res.status}`);
+    }
+
+    const data = await res.json();
+    lessons = data.docs || [];
   } catch (err) {
-    console.error('Error fetching lessons:', err)
-    lessons = []
+    console.error('Error fetching lessons:', err);
+    lessons = [];
   }
 
   return (
@@ -31,10 +38,20 @@ export default async function HomePage() {
         </h1>
 
         <div className={styles.links}>
-          <a className={styles.admin} href="/admin" target="_blank" rel="noopener noreferrer">
+          <a
+            className={styles.admin}
+            href="/admin"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Go to admin panel
           </a>
-          <a className={styles.docs} href="https://payloadcms.com/docs" target="_blank" rel="noopener noreferrer">
+          <a
+            className={styles.docs}
+            href="https://payloadcms.com/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Documentation
           </a>
         </div>
@@ -53,5 +70,5 @@ export default async function HomePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
