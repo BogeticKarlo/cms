@@ -21,7 +21,7 @@ const allowedOrigins = process.env.CORS_ORIGIN
   : [
       'http://localhost:5173',                  // local frontend
       'https://hci-2025-26-beta.vercel.app',   // production frontend
-      'https://hci-2025-26-cm0yopoh9-bogetickarlos-projects.vercel.app', // production frontend (CORS fix)
+      'https://hci-2025-26-gma6k02mg-bogetickarlos-projects.vercel.app/', // production frontend (CORS fix)
     ]
 
 export default buildConfig({
