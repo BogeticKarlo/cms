@@ -4,6 +4,7 @@ import config from '../../src/payload.config.js'
 export const testUser = {
   email: 'dev@payloadcms.com',
   password: 'test',
+  role: 'admin', // ✅ add required field
 }
 
 /**
@@ -26,8 +27,7 @@ export async function seedTestUser(): Promise<void> {
   await payload.create({
     collection: 'users',
     data: testUser,
-    draft: false, // or true if you want a draft
-
+    draft: false,
   })
 }
 
