@@ -58,19 +58,6 @@ export default async function HomePage() {
             Documentation
           </a>
         </div>
-
-        <div className={styles.lessons}>
-          <h2>Lessons:</h2>
-          {lessons.length === 0 ? (
-            <p>No lessons found.</p>
-          ) : (
-            <ul>
-              {lessons.map((lesson) => (
-                <li key={lesson.id}>{lesson.title}</li>
-              ))}
-            </ul>
-          )}
-        </div>
       </div>
     </div>
   );
