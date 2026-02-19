@@ -4,7 +4,7 @@ import config from '../../src/payload.config.js'
 export const testUser = {
   email: 'dev@payloadcms.com',
   password: 'test',
-  role: 'admin', // ✅ add required field
+  role: 'admin' as const, // ✅ add required field, fix type error
 }
 
 /**
