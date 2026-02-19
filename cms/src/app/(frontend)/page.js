@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
-import config from '@/payload.config';
 import styles from '../../../public/styles.module.css';
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <div className={styles.home}>
       <div className={styles.content}>
@@ -23,7 +22,7 @@ export default async function HomePage() {
         <div className={styles.links}>
           <a
             className={styles.admin}
-            href={config.routes.admin}
+            href="/admin"
             rel="noopener noreferrer"
             target="_blank"
           >
