@@ -15,14 +15,22 @@ import { LessonPage } from './collections/LessonPage'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+// ✅ Allowed origins
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((s) => s.trim())
+  : [
+      'http://localhost:5173', // local dev frontend
+      'https://hci-2025-26-beta.vercel.app', // deployed frontend
+    ]
+
 export default buildConfig({
   admin: {
     importMap: {
       baseDir: path.resolve(dirname),
     },
   },
-  cors: process.env.CORS_ORIGIN?.split(',').map(s => s.trim()) || [],
-  csrf: process.env.CSRF_ORIGIN?.split(',').map(s => s.trim()) || [],
+  cors: allowedOrigins,
+  csrf: allowedOrigins, // optional: only needed if you use CSRF protection
   collections: [Users, MediaImages, MediaVideos, Lesson, LessonPage],
   globals: [],
   editor: lexicalEditor(),
