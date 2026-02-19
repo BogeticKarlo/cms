@@ -1,9 +1,11 @@
-import Image from 'next/image'
-import React from 'react'
-import styles from '../../../public/styles.module.css'
+// app/page.js
+import Image from 'next/image';
+import React from 'react';
+import styles from '../../../public/styles.module.css';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'; // ensures server-side rendering
 
+// Server-only CMS URL (no trailing slash)
 const CMS_URL = 'https://cms-bogetickarlos-projects.vercel.app';
 const API_PATH = '/api/lesson-pages?depth=1&sort=order';
 
@@ -11,8 +13,9 @@ export default async function HomePage() {
   let lessons = [];
 
   try {
+    // Server-side fetch — no CORS issues
     const res = await fetch(new URL(API_PATH, CMS_URL).toString(), {
-      cache: 'no-store',
+      cache: 'no-store', // always fetch fresh data
     });
 
     if (!res.ok) {
