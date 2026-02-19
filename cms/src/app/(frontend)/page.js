@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import config from '@/payload.config';
-import styles from 'C:/Users/karlo/Desktop/repository/cms/cms/public/styles.module.css';
+import styles from '../../../public/styles.module.css';
 
 export default async function HomePage() {
   return (
