@@ -2,6 +2,8 @@ import Image from 'next/image'
 import React from 'react'
 import styles from '../../../public/styles.module.css'
 
+export const dynamic = 'force-dynamic';
+
 const CMS_URL = 'https://cms-bogetickarlos-projects.vercel.app'
 
 export default async function HomePage() {
