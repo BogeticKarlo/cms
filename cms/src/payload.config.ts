@@ -19,8 +19,8 @@ const dirname = path.dirname(filename)
 const allowedOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',').map((s) => s.trim())
   : [
-      'http://localhost:5173',                  // local frontend
-      'https://hci-2025-26-beta.vercel.app',   // production frontend
+      'http://localhost:5173', // local dev frontend
+      'https://hci-2025-26-beta.vercel.app', // production frontend
       'https://hci-2025-26-gma6k02mg-bogetickarlos-projects.vercel.app', // production frontend (CORS fix)
     ]
 
@@ -30,8 +30,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  // ✅ CORS & CSRF
-  cors: allowedOrigins.length > 0 ? allowedOrigins : ['*'], // '*' for temporary fallback
+  cors: allowedOrigins.length > 0 ? allowedOrigins : ['*'], // fallback for testing
   csrf: allowedOrigins.length > 0 ? allowedOrigins : [],
   collections: [Users, MediaImages, MediaVideos, Lesson, LessonPage],
   globals: [],
