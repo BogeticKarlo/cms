@@ -4,29 +4,24 @@ import styles from '../../../public/styles.module.css'
 
 const CMS_URL = 'https://cms-bogetickarlos-projects.vercel.app'
 
-async function getLessonPages() {
-  const res = await fetch(`${CMS_URL}/api/lesson-pages?depth=1&sort=order`, {
-    // This ensures the request is server-side and bypasses CORS issues
-    cache: 'no-store',
-  })
-  if (!res.ok) throw new Error('Failed to fetch lesson pages')
-  return res.json()
-}
-
 export default async function HomePage() {
-  const data = await getLessonPages()
-  const lessons = data.docs || []
+  let lessons = []
+
+  try {
+    const res = await fetch(`${CMS_URL}/api/lesson-pages?depth=1&sort=order`, { cache: 'no-store' })
+    if (!res.ok) throw new Error(`CMS fetch failed: ${res.status}`)
+    const data = await res.json()
+    lessons = data.docs || []
+  } catch (err) {
+    console.error('Error fetching lessons:', err)
+    lessons = []
+  }
 
   return (
     <div className={styles.home}>
       <div className={styles.content}>
         <picture>
-          <Image
-            alt="Payload Logo"
-            height={200}
-            width={200}
-            src="/logo.png"
-          />
+          <Image alt="Payload Logo" height={200} width={200} src="/logo.png" />
         </picture>
 
         <h1>
@@ -34,21 +29,10 @@ export default async function HomePage() {
         </h1>
 
         <div className={styles.links}>
-          <a
-            className={styles.admin}
-            href="/admin"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className={styles.admin} href="/admin" target="_blank" rel="noopener noreferrer">
             Go to admin panel
           </a>
-
-          <a
-            className={styles.docs}
-            href="https://payloadcms.com/docs"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className={styles.docs} href="https://payloadcms.com/docs" target="_blank" rel="noopener noreferrer">
             Documentation
           </a>
         </div>
