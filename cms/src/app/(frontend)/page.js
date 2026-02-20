@@ -5,9 +5,9 @@ import styles from '../../../public/styles.module.css';
 
 export const dynamic = 'force-dynamic'; // ensures server-side rendering
 
-// Server-only CMS URL (no trailing slash)
-const CMS_URL = 'https://cms-alpha-blush.vercel.app';
-const API_PATH = '/api/lesson-pages?depth=1&sort=order';
+// Correct CMS URL and collection slug
+const CMS_URL = 'https://cms-bogetickarlos-projects.vercel.app';
+const API_PATH = '/api/lessons?depth=1&sort=order';
 
 export default async function HomePage() {
   let lessons = [];
